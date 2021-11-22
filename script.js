@@ -17,6 +17,21 @@ function randomColor() {
   }
 }
 
+function createRows(n) {
+  let element;
+  const board = document.getElementById('pixel-board');
+
+  for (let count = 0; count < n; count += 1) {
+    element = document.createElement('div');
+    element.className = 'board-row';
+    board.appendChild(element);
+  }
+}
+
+function createBoard(n) {
+  createRows(n);
+}
+
 function addEventsToAllClasses(className, eventType, functionName) {
   const elements = document.getElementsByClassName(className);
 
@@ -48,3 +63,4 @@ function colorToPixel(event) {
 addEventsToAllClasses('color', 'click', changeSelected);
 addEventsToAllClasses('pixel', 'click', colorToPixel);
 randomColor();
+createBoard(5);
