@@ -11,13 +11,17 @@ body {
 }
 
 .color {
-  margin: 0 5px;
+  margin: 0 10px;
   width: 60px;
   height: 60px;
   cursor: pointer;
   border: 1px solid black;
 }
 
+.selected {
+  border: 5px solid white;
+  outline: 5px solid black;
+}
 .color:nth-child( 1 ) {
   background-color: black;
 }
