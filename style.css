@@ -1,0 +1,32 @@
+body {
+  box-sizing: border-box;
+}
+
+.colors-pallete {
+  display: flex;
+  flex-direction: row;
+}
+
+.color {
+  margin: 0 5px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.color:nth-child(1) {
+  background-color: black;
+}
+
+.color:nth-child(2) {
+  background-color: #42BFDD ;
+}
+
+.color:nth-child(3) {
+  background-color: #3BC14A;
+}
+
+.color:nth-child(4) {
+  background-color: #E3170A ;
+}
