@@ -74,7 +74,17 @@ function colorToPixel(event) {
   element.style.backgroundColor = color;
 }
 
+function clearBoard() {
+  const elements = document.querySelectorAll('.pixel');
+
+  for (let i = 0; i < elements.length; i += 1) {
+    elements[i].style.backgroundColor = 'white';
+  }
+}
 createBoard(5);
 addEventsToAllClasses('color', 'click', changeSelected);
 addEventsToAllClasses('pixel', 'click', colorToPixel);
 randomColor();
+
+const clearButton = document.getElementById('clear-board');
+clearButton.addEventListener('click', clearBoard);
