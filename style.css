@@ -16,18 +16,18 @@ body {
   border: 1px solid black;
 }
 
-.color:nth-child(1) {
+.color:nth-child( 1 ) {
   background-color: black;
 }
 
-.color:nth-child(2) {
-  background-color: #42BFDD ;
+.color:nth-child( 2 ) {
+  background-color: #42bfdd;
 }
 
-.color:nth-child(3) {
-  background-color: #3BC14A;
+.color:nth-child( 3 ) {
+  background-color: #3bc14a;
 }
 
-.color:nth-child(4) {
-  background-color: #E3170A ;
+.color:nth-child( 4 ) {
+  background-color: #e3170a;
 }
