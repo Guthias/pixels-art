@@ -1,3 +1,22 @@
+function generateRandomColor() {
+  const green = Math.floor(Math.random() * 255);
+  const red = Math.floor(Math.random() * 255);
+  const blue = Math.floor(Math.random() * 255);
+
+  return `rgb(${red}, ${green}, ${blue})`;
+}
+
+function randomColor() {
+  const elements = document.querySelectorAll('.color');
+  for (let i = 0; i < elements.length; i += 1) {
+    if (i === 0) {
+      elements[i].style.backgroundColor = 'rgb(0, 0, 0)';
+    } else {
+      elements[i].style.backgroundColor = generateRandomColor();
+    }
+  }
+}
+
 function addEventsToAllClasses(className, eventType, functionName) {
   const elements = document.getElementsByClassName(className);
 
@@ -28,3 +47,4 @@ function colorToPixel(event) {
 
 addEventsToAllClasses('color', 'click', changeSelected);
 addEventsToAllClasses('pixel', 'click', colorToPixel);
+randomColor();

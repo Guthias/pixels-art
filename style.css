@@ -22,21 +22,7 @@ body {
   border: 5px solid white;
   outline: 5px solid black;
 }
-.color:nth-child( 1 ) {
-  background-color: black;
-}
 
-.color:nth-child( 2 ) {
-  background-color: #42bfdd;
-}
-
-.color:nth-child( 3 ) {
-  background-color: #3bc14a;
-}
-
-.color:nth-child( 4 ) {
-  background-color: #e3170a;
-}
 #pixel-board {
   padding: 40px;
   width: 100%;
