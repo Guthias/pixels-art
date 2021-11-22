@@ -19,4 +19,12 @@ function changeSelected(event) {
   event.target.classList.add('selected');
 }
 
+function colorToPixel(event) {
+  const element = event.target;
+  const color = document.querySelector('.selected').style.backgroundColor;
+
+  element.style.backgroundColor = color;
+}
+
 addEventsToAllClasses('color', 'click', changeSelected);
+addEventsToAllClasses('pixel', 'click', colorToPixel);
