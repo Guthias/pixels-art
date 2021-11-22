@@ -74,7 +74,7 @@ function colorToPixel(event) {
   element.style.backgroundColor = color;
 }
 
+createBoard(5);
 addEventsToAllClasses('color', 'click', changeSelected);
 addEventsToAllClasses('pixel', 'click', colorToPixel);
 randomColor();
-createBoard(8);
