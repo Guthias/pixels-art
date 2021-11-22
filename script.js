@@ -28,8 +28,22 @@ function createRows(n) {
   }
 }
 
+function createPixels(n) {
+  const rows = document.querySelectorAll('.board-row');
+  let element;
+
+  for (let y = 0; y < rows.length; y += 1) {
+    for (let x = 0; x < n; x += 1) {
+      element = document.createElement('div');
+      element.className = 'pixel';
+      rows[y].appendChild(element);
+    }
+  }
+}
+
 function createBoard(n) {
   createRows(n);
+  createPixels(n);
 }
 
 function addEventsToAllClasses(className, eventType, functionName) {
@@ -63,4 +77,4 @@ function colorToPixel(event) {
 addEventsToAllClasses('color', 'click', changeSelected);
 addEventsToAllClasses('pixel', 'click', colorToPixel);
 randomColor();
-createBoard(5);
+createBoard(8);
