@@ -45,6 +45,10 @@ function createBoard(n) {
   createRows(n);
   createPixels(n);
 }
+function deleteBoard() {
+  const pixelBoard = document.getElementById('pixel-board');
+  pixelBoard.innerHTML = '';
+}
 
 function addEventsToAllClasses(className, eventType, functionName) {
   const elements = document.getElementsByClassName(className);
@@ -81,6 +85,23 @@ function clearBoard() {
     elements[i].style.backgroundColor = 'white';
   }
 }
+function newBoard() {
+  let number = document.getElementById('board-size').value;
+  if (number === '') {
+    alert('Board inválido!');
+  }
+
+  if (number < 5) {
+    number = 5;
+  } else if (number > 50) {
+    number = 50;
+  }
+
+  deleteBoard();
+  createBoard(number);
+  addEventsToAllClasses('pixel', 'click', colorToPixel);
+}
+
 createBoard(5);
 addEventsToAllClasses('color', 'click', changeSelected);
 addEventsToAllClasses('pixel', 'click', colorToPixel);
@@ -88,3 +109,7 @@ randomColor();
 
 const clearButton = document.getElementById('clear-board');
 clearButton.addEventListener('click', clearBoard);
+
+const generateButton = document.getElementById('generate-board');
+
+generateButton.addEventListener('click', newBoard);
