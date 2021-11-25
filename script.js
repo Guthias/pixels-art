@@ -1,3 +1,6 @@
+const newColorButton = document.getElementById('new-color');
+const colorPalette = document.getElementById('color-palette');
+
 function generateRandomColor() {
   const green = Math.round(Math.random() * 255);
   const red = Math.round(Math.random() * 255);
@@ -102,6 +105,15 @@ function newBoard() {
   addEventsToAllClasses('pixel', 'click', colorToPixel);
 }
 
+function newColor() {
+  const element = document.createElement('div');
+
+  element.className = 'color';
+  element.style.backgroundColor = generateRandomColor();
+  element.addEventListener('click', changeSelected);
+  colorPalette.insertBefore(element, newColorButton);
+}
+
 createBoard(5);
 addEventsToAllClasses('color', 'click', changeSelected);
 addEventsToAllClasses('pixel', 'click', colorToPixel);
@@ -113,3 +125,4 @@ clearButton.addEventListener('click', clearBoard);
 const generateButton = document.getElementById('generate-board');
 
 generateButton.addEventListener('click', newBoard);
+newColorButton.addEventListener('click', newColor);
