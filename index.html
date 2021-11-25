@@ -23,15 +23,18 @@
  
   <div class="config-area">
     <div class="setting-size-area">
-      <input id="board-size" type="number" min="1">
-      <button id="generate-board">VQV</button>
-    </div>
-    <div class="clear-board-area">
-      <button id="clear-board">Limpar</button>
+      <label for="board-size">Tamanho do Quadro</label>
+      <div class="input-box">
+        <input id="board-size" placeholder="Numero de Pixels (Exemplo: 8)" type="number" min="1">
+        <button id="generate-board">VQV</button>  
+      </div>
     </div>
   </div>
 
   <div id="pixel-board"></div>
+  <div class="clear-board-area">
+    <button id="clear-board" class="delete-button">Limpar</button>
+  </div>
   
   <script src="script.js"></script>
 </body>
