@@ -3,6 +3,14 @@ const colorPalette = document.getElementById('color-palette');
 const clearButton = document.getElementById('clear-board');
 const generateButton = document.getElementById('generate-board');
 
+function addEventsToAllClasses(className, eventType, functionName) {
+  const elements = document.getElementsByClassName(className);
+
+  for (let i = 0; i < elements.length; i += 1) {
+    elements[i].addEventListener(eventType, functionName);
+  }
+}
+
 function generateRandomColor() {
   const green = Math.round(Math.random() * 255);
   const red = Math.round(Math.random() * 255);
@@ -64,22 +72,9 @@ function createPixels(n) {
   }
 }
 
-function createBoard(n) {
-  createRows(n);
-  createPixels(n);
-}
-
 function deleteBoard() {
   const pixelBoard = document.getElementById('pixel-board');
   pixelBoard.innerHTML = '';
-}
-
-function addEventsToAllClasses(className, eventType, functionName) {
-  const elements = document.getElementsByClassName(className);
-
-  for (let i = 0; i < elements.length; i += 1) {
-    elements[i].addEventListener(eventType, functionName);
-  }
 }
 
 function removeSelected() {
@@ -110,8 +105,15 @@ function clearBoard() {
   }
 }
 
+function createBoard(n) {
+  createRows(n);
+  createPixels(n);
+  addEventsToAllClasses('pixel', 'click', colorToPixel);
+}
+
 function newBoard() {
   let number = document.getElementById('board-size').value;
+
   if (number === '') {
     alert('Board inválido!');
   }
@@ -124,7 +126,6 @@ function newBoard() {
 
   deleteBoard();
   createBoard(number);
-  addEventsToAllClasses('pixel', 'click', colorToPixel);
 }
 
 function newColor() {
@@ -160,6 +161,6 @@ generateButton.addEventListener('click', newBoard);
 newColorButton.addEventListener('click', newColor);
 
 window.onload = () => {
-  newBoard();
+  createBoard(5);
   createPallete();
 };
