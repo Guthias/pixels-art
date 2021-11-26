@@ -117,6 +117,35 @@ function newColor() {
   }
 }
 
+function splitRGB(rgb) {
+  let rgbNumbers = rgb.replace(/rgb|[()]|,/g, '');
+  rgbNumbers = rgbNumbers.split(' ');
+  const red = parseInt(rgbNumbers[0], 10);
+  const blue = parseInt(rgbNumbers[0], 10);
+  const green = parseInt(rgbNumbers[0], 10);
+
+  return [red, blue, green];
+}
+
+function isLightColor(rgb) {
+// Source: https://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
+
+  let red = rgb[0];
+  let blue = rgb[1];
+  let green = rgb[2];
+
+  red = red * red * 0.241;
+  green = green * green * 0.691;
+  blue = blue * blue * 0.068;
+
+  const brightness = Math.sqrt(red + green + blue);
+
+  if (brightness < 130) {
+    return false;
+  }
+  return true;
+}
+
 createBoard(5);
 addEventsToAllClasses('color', 'click', changeSelected);
 addEventsToAllClasses('pixel', 'click', colorToPixel);
