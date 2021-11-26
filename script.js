@@ -107,11 +107,14 @@ function newBoard() {
 
 function newColor() {
   const element = document.createElement('div');
-
   element.className = 'color';
   element.style.backgroundColor = generateRandomColor();
   element.addEventListener('click', changeSelected);
   colorPalette.insertBefore(element, newColorButton);
+
+  if (colorPalette.children.length === 9) {
+    newColorButton.remove();
+  }
 }
 
 createBoard(5);
