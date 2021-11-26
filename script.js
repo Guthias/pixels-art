@@ -9,6 +9,35 @@ function generateRandomColor() {
   return `rgb(${red}, ${green}, ${blue})`;
 }
 
+function splitRGB(rgb) {
+  let rgbNumbers = rgb.replace(/rgb|[()]|,/g, '');
+  rgbNumbers = rgbNumbers.split(' ');
+  const red = parseInt(rgbNumbers[0], 10);
+  const blue = parseInt(rgbNumbers[0], 10);
+  const green = parseInt(rgbNumbers[0], 10);
+
+  return [red, blue, green];
+}
+
+function isLightColor(rgb) {
+// Source: https://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
+
+  let red = rgb[0];
+  let blue = rgb[1];
+  let green = rgb[2];
+
+  red = red * red * 0.241;
+  green = green * green * 0.691;
+  blue = blue * blue * 0.068;
+
+  const brightness = Math.sqrt(red + green + blue);
+
+  if (brightness < 130) {
+    return false;
+  }
+  return true;
+}
+
 function randomColor() {
   const elements = document.querySelectorAll('.color');
   for (let i = 0; i < elements.length; i += 1) {
@@ -107,43 +136,22 @@ function newBoard() {
 
 function newColor() {
   const element = document.createElement('div');
+  const rgbColor = generateRandomColor();
+  const isLight = isLightColor(splitRGB(rgbColor));
+
   element.className = 'color';
-  element.style.backgroundColor = generateRandomColor();
+
+  if (isLight) {
+    element.classList.add('light-color');
+  }
+  element.style.backgroundColor = rgbColor;
   element.addEventListener('click', changeSelected);
+
   colorPalette.insertBefore(element, newColorButton);
 
   if (colorPalette.children.length === 9) {
     newColorButton.remove();
   }
-}
-
-function splitRGB(rgb) {
-  let rgbNumbers = rgb.replace(/rgb|[()]|,/g, '');
-  rgbNumbers = rgbNumbers.split(' ');
-  const red = parseInt(rgbNumbers[0], 10);
-  const blue = parseInt(rgbNumbers[0], 10);
-  const green = parseInt(rgbNumbers[0], 10);
-
-  return [red, blue, green];
-}
-
-function isLightColor(rgb) {
-// Source: https://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
-
-  let red = rgb[0];
-  let blue = rgb[1];
-  let green = rgb[2];
-
-  red = red * red * 0.241;
-  green = green * green * 0.691;
-  blue = blue * blue * 0.068;
-
-  const brightness = Math.sqrt(red + green + blue);
-
-  if (brightness < 130) {
-    return false;
-  }
-  return true;
 }
 
 createBoard(5);
