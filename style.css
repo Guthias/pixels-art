@@ -64,6 +64,10 @@ body {
   border-bottom: 15px solid white;
 }
 
+.selected.light-color:before {
+  border-bottom: 15px solid black !important;
+}
+
 #pixel-board {
   padding: 40px;
   width: 100%;
