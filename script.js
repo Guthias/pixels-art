@@ -38,14 +38,11 @@ function isLightColor(rgb) {
   return true;
 }
 
-function randomColor() {
-  const elements = document.querySelectorAll('.color');
-  for (let i = 0; i < elements.length; i += 1) {
-    if (i === 0) {
-      elements[i].style.backgroundColor = 'rgb(0, 0, 0)';
-    } else {
-      elements[i].style.backgroundColor = generateRandomColor();
-    }
+function createPallete() {
+  const element = document.querySelector('.selected');
+  element.style.backgroundColor = 'rgb(0, 0, 0)';
+  for (let i = 0; i < 3; i += 1) {
+    newColor();
   }
 }
 
@@ -157,7 +154,7 @@ function newColor() {
 createBoard(5);
 addEventsToAllClasses('color', 'click', changeSelected);
 addEventsToAllClasses('pixel', 'click', colorToPixel);
-randomColor();
+createPallete();
 
 const clearButton = document.getElementById('clear-board');
 clearButton.addEventListener('click', clearBoard);
